@@ -11,9 +11,75 @@ const generateToken = (id) => {
   });
 };
 
-// @desc    Login user
-// @route   POST /api/auth/login
+// @desc    Register new user
+// @route   POST /api/auth/register
 // @access  Public
+const register = async (req, res) => {
+  try {
+    const { username, password, confirmPassword } = req.body;
+
+    // Validate input
+    if (!username || !password || !confirmPassword) {
+      return res.status(400).json({ message: 'Please provide all required fields' });
+    }
+
+    // Check password match
+    if (password !== confirmPassword) {
+      return res.status(400).json({ message: 'Passwords do not match' });
+    }
+
+    // Check password length
+    if (password.length < 6) {
+      return res.status(400).json({ message: 'Password must be at least 6 characters long' });
+    }
+
+    // Check username length
+    if (username.length < 3) {
+      return res.status(400).json({ message: 'Username must be at least 3 characters long' });
+    }
+
+    // Check if user already exists
+    const userExists = await User.findOne({ username });
+
+    if (userExists) {
+      return res.status(400).json({ message: 'Username already exists' });
+    }
+
+    // Hash password
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
+
+    // Create user
+    const user = await User.create({
+      username,
+      password: hashedPassword,
+      role: 'student', // Default role is student
+    });
+
+    // Create initial progress for the user
+    await Progress.create({
+      userId: user._id,
+      completedLevels: [],
+      totalScore: 0,
+      currentLevel: 1,
+    });
+
+    // Generate token
+    const token = generateToken(user._id);
+
+    res.status(201).json({
+      _id: user._id,
+      username: user.username,
+      role: user.role,
+      token,
+    });
+  } catch (error) {
+    console.error('Registration error:', error);
+    res.status(500).json({ message: 'Server error during registration' });
+  }
+};
+
+// @desc    Login user
 const login = async (req, res) => {
   try {
     const { username, password } = req.body;
@@ -53,5 +119,6 @@ const login = async (req, res) => {
 };
 
 module.exports = {
+  register,
   login,
 };

@@ -98,18 +98,21 @@ export default function LoginPage() {
             {loading ? 'Signing in...' : 'Sign In'}
           </button>
         </form>
+        </form>
 
-        <div style={{ marginTop: '24px', padding: '16px', background: '#f9fafb', borderRadius: '8px' }}>
-          <p style={{ fontSize: '14px', color: '#6b7280', marginBottom: '8px', fontWeight: '600' }}>
-            Demo Credentials:
-          </p>
-          <p style={{ fontSize: '13px', color: '#4b5563', marginBottom: '4px' }}>
-            <strong>Admin:</strong> admin / admin123
-          </p>
-          <p style={{ fontSize: '13px', color: '#4b5563' }}>
-            <strong>Student:</strong> student1 / student123
+        <div style={{ marginTop: '24px', textAlign: 'center' }}>
+          <p style={{ fontSize: '14px', color: '#6b7280' }}>
+            Don't have an account?{' '}
+            <a
+              href="/register"
+              style={{ color: '#3b82f6', fontWeight: '600', textDecoration: 'none' }}
+            >
+              Sign up here
+            </a>
           </p>
         </div>
+
+        <div style={{ marginTop: '24px', padding: '16px', background: '#f9fafb', borderRadius: '8px' }}>
       </div>
     </div>
   );

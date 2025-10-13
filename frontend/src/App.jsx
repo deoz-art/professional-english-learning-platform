@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { AuthProvider } from './context/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
 import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
 import LevelSelectionPage from './pages/LevelSelectionPage';
 import QuizPage from './pages/QuizPage';
 import AdminLayout from './admin/components/AdminLayout';
@@ -10,7 +11,6 @@ import AdminDashboardPage from './admin/pages/AdminDashboardPage';
 import UserManagementPage from './admin/pages/UserManagementPage';
 import UserEditPage from './admin/pages/UserEditPage';
 import LevelManagementPage from './admin/pages/LevelManagementPage';
-import LevelEditPage from './admin/pages/LevelEditPage';
 
 function App() {
   return (
@@ -18,7 +18,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/login" element={<LoginPage />} />
-          
+          <Route path="/register" element={<RegisterPage />} />
           {/* Student Routes */}
           <Route
             path="/levels"
