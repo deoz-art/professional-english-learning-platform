@@ -1,0 +1,30 @@
+{
+  "name": "professional-english-learning-platform",
+  "version": "1.0.0",
+  "description": "Professional English Learning Platform with Quiz System",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace=frontend",
+    "build": "npm run build --workspace=frontend",
+    "preview": "npm run preview --workspace=frontend",
+    "backend:dev": "npm run dev --workspace=backend",
+    "backend:start": "npm run start --workspace=backend"
+  },
+  "keywords": [
+    "english",
+    "learning",
+    "quiz",
+    "education",
+    "vite",
+    "react"
+  ],
+  "author": "",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
