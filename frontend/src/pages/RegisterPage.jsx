@@ -2,13 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
-export default function LoginPage() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+export default function RegisterPage() {
+  const [formData, setFormData] = useState({
+    username: '',
+    password: '',
+    confirmPassword: ''
+  });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   
-  const { login, user, isAdmin } = useAuth();
+  const { register, user, isAdmin } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -18,12 +21,38 @@ export default function LoginPage() {
     }
   }, [user, navigate, isAdmin]);
 
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
     setLoading(true);
 
-    const result = await login(username, password);
+    // Client-side validation
+    if (formData.password !== formData.confirmPassword) {
+      setError('Passwords do not match');
+      setLoading(false);
+      return;
+    }
+
+    if (formData.password.length < 6) {
+      setError('Password must be at least 6 characters long');
+      setLoading(false);
+      return;
+    }
+
+    if (formData.username.length < 3) {
+      setError('Username must be at least 3 characters long');
+      setLoading(false);
+      return;
+    }
+
+    const result = await register(formData);
 
     if (result.success) {
       // Navigation handled by useEffect
@@ -51,10 +80,10 @@ export default function LoginPage() {
       }}>
         <div style={{ textAlign: 'center', marginBottom: '32px' }}>
           <h1 style={{ fontSize: '32px', fontWeight: '800', color: '#111827', marginBottom: '8px' }}>
-            Welcome Back! 🎓
+            Create Account 🚀
           </h1>
           <p style={{ color: '#6b7280', fontSize: '16px' }}>
-            Sign in to continue learning
+            Join us to start learning
           </p>
         </div>
 
@@ -69,11 +98,13 @@ export default function LoginPage() {
             <label>Username</label>
             <input
               type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              placeholder="Enter your username"
+              name="username"
+              value={formData.username}
+              onChange={handleChange}
+              placeholder="Choose a username (min. 3 characters)"
               required
               disabled={loading}
+              minLength={3}
             />
           </div>
 
@@ -81,9 +112,24 @@ export default function LoginPage() {
             <label>Password</label>
             <input
               type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Enter your password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+              placeholder="Create a password (min. 6 characters)"
+              required
+              disabled={loading}
+              minLength={6}
+            />
+          </div>
+
+          <div className="input-group">
+            <label>Confirm Password</label>
+            <input
+              type="password"
+              name="confirmPassword"
+              value={formData.confirmPassword}
+              onChange={handleChange}
+              placeholder="Confirm your password"
               required
               disabled={loading}
             />
@@ -95,22 +141,26 @@ export default function LoginPage() {
             style={{ width: '100%', marginTop: '8px' }}
             disabled={loading}
           >
-            {loading ? 'Signing in...' : 'Sign In'}
+            {loading ? 'Creating account...' : 'Sign Up'}
           </button>
         </form>
-        </form>
+
         <div style={{ marginTop: '24px', textAlign: 'center' }}>
           <p style={{ fontSize: '14px', color: '#6b7280' }}>
-            Don't have an account?{' '}
+            Already have an account?{' '}
             <a
-              href="/register"
+              href="/login"
               style={{ color: '#3b82f6', fontWeight: '600', textDecoration: 'none' }}
             >
-              Sign up here
+              Sign in here
             </a>
           </p>
         </div>
 
+        <div style={{ marginTop: '24px', padding: '16px', background: '#f9fafb', borderRadius: '8px' }}>
+          <p style={{ fontSize: '12px', color: '#6b7280', textAlign: 'center', margin: 0 }}>
+            💡 <strong>Tip:</strong> Choose a memorable username and secure password
+          </p>
         </div>
       </div>
     </div>
