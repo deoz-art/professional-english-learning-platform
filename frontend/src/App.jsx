@@ -4,11 +4,10 @@ import { AuthProvider } from './context/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
 
 // Pages
+import LandingPage from './pages/LandingPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import LevelSelectionPage from './pages/LevelSelectionPage';
-import QuizPage from './pages/QuizPage';
-
 // Admin Pages
 import AdminDashboardPage from './admin/pages/AdminDashboardPage';
 import UserManagementPage from './admin/pages/UserManagementPage';
@@ -20,10 +19,11 @@ function App() {
   return (
     <AuthProvider>
       <Router>
-        <Routes>
-          {/* Public Routes */}
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
+          <Routes>
+            {/* Landing Page */}
+            <Route path="/" element={<LandingPage />} />
+            
+            {/* Public Routes */}
           
           {/* Protected Student Routes */}
           <Route
@@ -101,9 +101,8 @@ function App() {
             }
           />
           
-          {/* Default Route */}
-          <Route path="/" element={<Navigate to="/login" replace />} />
-          <Route path="*" element={<Navigate to="/login" replace />} />
+            {/* Catch all - redirect to landing */}
+            <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </Router>
     </AuthProvider>
