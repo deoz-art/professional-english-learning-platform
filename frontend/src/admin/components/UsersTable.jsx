@@ -34,18 +34,17 @@ export default function UsersTable({ users, onDelete }) {
               </td>
                 <td>{new Date(user.createdAt).toLocaleDateString()}</td>
                 <td>
-                  <td>
                   {user.role === 'student' ? (
-                      <button
-                        onClick={() => {
-                          console.log('Navigating to scores for user:', user._id);
-                          navigate(`/admin/users/${user._id}/scores`);
-                        }}
-                        className="btn btn-secondary"
-                        style={{ padding: '8px 16px', fontSize: '14px' }}
-                      >
-                        📊 View Scores
-                      </button>
+                    <button
+                      onClick={() => {
+                        console.log('Navigating to scores for user:', user._id);
+                        navigate(`/admin/users/${user._id}/scores`);
+                      }}
+                      className="btn btn-secondary"
+                      style={{ padding: '8px 16px', fontSize: '14px' }}
+                    >
+                      📊 View Scores
+                    </button>
                   ) : (
                     <span style={{ color: '#9ca3af', fontSize: '14px' }}>N/A</span>
                   )}
