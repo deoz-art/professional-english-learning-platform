@@ -3,15 +3,21 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { AuthProvider } from './context/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
 
-// Pages
+// Public Pages
 import LandingPage from './pages/LandingPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
+
+// Student Pages
 import LevelSelectionPage from './pages/LevelSelectionPage';
+import QuizPage from './pages/QuizPage';
+
 // Admin Pages
+import AdminLayout from './admin/components/AdminLayout';
 import AdminDashboardPage from './admin/pages/AdminDashboardPage';
 import UserManagementPage from './admin/pages/UserManagementPage';
 import UserEditPage from './admin/pages/UserEditPage';
+import StudentScoresPage from './admin/pages/StudentScoresPage';
 import LevelManagementPage from './admin/pages/LevelManagementPage';
 import LevelEditPage from './admin/pages/LevelEditPage';
 
@@ -19,17 +25,17 @@ function App() {
   return (
     <AuthProvider>
       <Router>
-          <Routes>
-            {/* Landing Page */}
-            <Route path="/" element={<LandingPage />} />
-            
-            {/* Public Routes */}
-          
-          {/* Protected Student Routes */}
+        <Routes>
+          {/* Public Routes */}
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+
+          {/* Student Routes */}
           <Route
             path="/levels"
             element={
-              <ProtectedRoute>
+              <ProtectedRoute allowedRoles={['student']}>
                 <LevelSelectionPage />
               </ProtectedRoute>
             }
@@ -37,72 +43,34 @@ function App() {
           <Route
             path="/quiz/:levelNumber"
             element={
-              <ProtectedRoute>
+              <ProtectedRoute allowedRoles={['student']}>
                 <QuizPage />
               </ProtectedRoute>
             }
           />
-          
-          {/* Protected Admin Routes */}
+
+          {/* Admin Routes */}
           <Route
-            path="/admin/dashboard"
+            path="/admin"
             element={
-              <ProtectedRoute adminOnly>
-                <AdminDashboardPage />
+              <ProtectedRoute allowedRoles={['admin']}>
+                <AdminLayout />
               </ProtectedRoute>
             }
-          />
-          <Route
-            path="/admin/users"
-            element={
-              <ProtectedRoute adminOnly>
-                <UserManagementPage />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/admin/users/new"
-            element={
-              <ProtectedRoute adminOnly>
-                <UserEditPage />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/admin/users/:userId"
-            element={
-              <ProtectedRoute adminOnly>
-                <UserEditPage />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/admin/levels"
-            element={
-              <ProtectedRoute adminOnly>
-                <LevelManagementPage />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/admin/levels/new"
-            element={
-              <ProtectedRoute adminOnly>
-                <LevelEditPage />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/admin/levels/:levelId"
-            element={
-              <ProtectedRoute adminOnly>
-                <LevelEditPage />
-              </ProtectedRoute>
-            }
-          />
-          
-            {/* Catch all - redirect to landing */}
-            <Route path="*" element={<Navigate to="/" replace />} />
+          >
+            <Route index element={<Navigate to="/admin/dashboard" replace />} />
+            <Route path="dashboard" element={<AdminDashboardPage />} />
+            <Route path="users" element={<UserManagementPage />} />
+            <Route path="users/new" element={<UserEditPage />} />
+            <Route path="users/:userId/edit" element={<UserEditPage />} />
+            <Route path="users/:userId/scores" element={<StudentScoresPage />} />
+            <Route path="levels" element={<LevelManagementPage />} />
+            <Route path="levels/new" element={<LevelEditPage />} />
+            <Route path="levels/:levelId/edit" element={<LevelEditPage />} />
+          </Route>
+
+          {/* Fallback */}
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </Router>
     </AuthProvider>

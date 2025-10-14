@@ -8,12 +8,13 @@ export default function UsersTable({ users, onDelete }) {
     <div className="table-container">
       <table>
         <thead>
-          <tr>
-            <th>Username</th>
-            <th>Role</th>
-            <th>Date Joined</th>
-            <th>Actions</th>
-          </tr>
+            <tr>
+              <th>Username</th>
+              <th>Role</th>
+              <th>Date Joined</th>
+              <th>Scores</th>
+              <th>Actions</th>
+            </tr>
         </thead>
         <tbody>
           {users.map((user) => (
@@ -31,25 +32,38 @@ export default function UsersTable({ users, onDelete }) {
                   {user.role}
                 </span>
               </td>
-              <td>{new Date(user.createdAt).toLocaleDateString()}</td>
-              <td>
-                <div style={{ display: 'flex', gap: '8px' }}>
-                  <button
-                    onClick={() => navigate(`/admin/users/${user._id}/edit`)}
-                    className="btn btn-secondary"
-                    style={{ padding: '8px 16px', fontSize: '14px' }}
-                  >
-                    Edit
-                  </button>
-                  <button
-                    onClick={() => onDelete(user)}
-                    className="btn btn-danger"
-                    style={{ padding: '8px 16px', fontSize: '14px' }}
-                  >
-                    Delete
-                  </button>
-                </div>
-              </td>
+                <td>{new Date(user.createdAt).toLocaleDateString()}</td>
+                <td>
+                  {user.role === 'student' ? (
+                    <button
+                      onClick={() => navigate(`/admin/users/${user._id}/scores`)}
+                      className="btn btn-secondary"
+                      style={{ padding: '8px 16px', fontSize: '14px' }}
+                    >
+                      📊 View Scores
+                    </button>
+                  ) : (
+                    <span style={{ color: '#9ca3af', fontSize: '14px' }}>N/A</span>
+                  )}
+                </td>
+                <td>
+                  <div style={{ display: 'flex', gap: '8px' }}>
+                    <button
+                      onClick={() => navigate(`/admin/users/${user._id}/edit`)}
+                      className="btn btn-secondary"
+                      style={{ padding: '8px 16px', fontSize: '14px' }}
+                    >
+                      Edit
+                    </button>
+                    <button
+                      onClick={() => onDelete(user)}
+                      className="btn btn-danger"
+                      style={{ padding: '8px 16px', fontSize: '14px' }}
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </td>
             </tr>
           ))}
         </tbody>
