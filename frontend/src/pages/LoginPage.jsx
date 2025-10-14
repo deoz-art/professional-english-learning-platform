@@ -97,8 +97,8 @@ export default function LoginPage() {
           >
             {loading ? 'Signing in...' : 'Sign In'}
           </button>
-        </form>
-        </form>
+          </form>
+          <div style={{ marginTop: '24px', textAlign: 'center' }}>
         <div style={{ marginTop: '24px', textAlign: 'center' }}>
           <p style={{ fontSize: '14px', color: '#6b7280' }}>
             Don't have an account?{' '}
