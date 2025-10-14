@@ -36,7 +36,10 @@ export const adminAPI = {
   createUser: (userData) => api.post('/admin/users', userData),
   updateUser: (userId, userData) => api.put(`/admin/users/${userId}`, userData),
   deleteUser: (userId) => api.delete(`/admin/users/${userId}`),
-  getUserProgress: (userId) => api.get(`/admin/progress/${userId}`),
+  getUserProgress: (userId) => {
+    console.log('Fetching progress for user ID:', userId);
+    return api.get(`/admin/progress/${userId}`);
+  },
 };
 
 // Level API
