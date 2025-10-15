@@ -15,7 +15,7 @@ import QuizPage from './pages/QuizPage';
 // Admin Pages
 import AdminLayout from './admin/components/AdminLayout';
 import AdminDashboardPage from './admin/pages/AdminDashboardPage';
-import UserManagementPage from './admin/pages/UserManagementPage';
+import { UserManagementPage } from './admin/pages/UserManagementPage';
 import UserEditPage from './admin/pages/UserEditPage';
 import StudentScoresPage from './admin/pages/StudentScoresPage';
 import LevelManagementPage from './admin/pages/LevelManagementPage';
