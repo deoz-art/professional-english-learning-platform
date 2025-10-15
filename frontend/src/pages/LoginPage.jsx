@@ -12,7 +12,6 @@ export default function LoginPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Redirect if already logged in
     if (user) {
       navigate(isAdmin() ? '/admin/dashboard' : '/levels', { replace: true });
     }
@@ -40,26 +39,26 @@ export default function LoginPage() {
       alignItems: 'center',
       justifyContent: 'center',
       padding: '20px',
+      background: '#fafafa',
     }}>
       <div style={{
         background: 'white',
-        borderRadius: '16px',
-        padding: '48px',
-        maxWidth: '450px',
+        border: '1px solid #e8e8e8',
+        padding: '64px 48px',
+        maxWidth: '420px',
         width: '100%',
-        boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1)',
       }}>
-        <div style={{ textAlign: 'center', marginBottom: '32px' }}>
-          <h1 style={{ fontSize: '32px', fontWeight: '800', color: '#111827', marginBottom: '8px' }}>
-            Welcome Back! 🎓
+        <div style={{ marginBottom: '48px' }}>
+          <h1 style={{ fontSize: '24px', fontWeight: '300', color: '#1a1a1a', marginBottom: '8px', letterSpacing: '-0.5px' }}>
+            Sign In
           </h1>
-          <p style={{ color: '#6b7280', fontSize: '16px' }}>
-            Sign in to continue learning
+          <p style={{ color: '#999', fontSize: '13px' }}>
+            Welcome back
           </p>
         </div>
 
         {error && (
-          <div className="alert alert-error" style={{ marginBottom: '24px' }}>
+          <div className="alert alert-error" style={{ marginBottom: '32px' }}>
             {error}
           </div>
         )}
@@ -71,7 +70,7 @@ export default function LoginPage() {
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              placeholder="Enter your username"
+              placeholder="Enter username"
               required
               disabled={loading}
             />
@@ -83,7 +82,7 @@ export default function LoginPage() {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="Enter your password"
+              placeholder="Enter password"
               required
               disabled={loading}
             />
@@ -99,14 +98,14 @@ export default function LoginPage() {
           </button>
         </form>
 
-        <div style={{ marginTop: '24px', textAlign: 'center' }}>
-          <p style={{ fontSize: '14px', color: '#6b7280' }}>
+        <div style={{ marginTop: '32px', textAlign: 'center', paddingTop: '32px', borderTop: '1px solid #f0f0f0' }}>
+          <p style={{ fontSize: '13px', color: '#999' }}>
             Don't have an account?{' '}
             <a
               href="/register"
-              style={{ color: '#3b82f6', fontWeight: '600', textDecoration: 'none' }}
+              style={{ color: '#1a1a1a', fontWeight: '500', textDecoration: 'none', borderBottom: '1px solid #1a1a1a' }}
             >
-              Sign up here
+              Sign up
             </a>
           </p>
         </div>

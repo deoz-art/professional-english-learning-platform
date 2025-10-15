@@ -37,26 +37,26 @@ export default function LevelSelectionPage() {
   const getStatusColor = (status) => {
     switch (status) {
       case 'completed':
-        return '#10b981';
+        return '#1a1a1a';
       case 'unlocked':
-        return '#2563eb';
+        return '#757575';
       case 'locked':
-        return '#9ca3af';
+        return '#e0e0e0';
       default:
-        return '#9ca3af';
+        return '#e0e0e0';
     }
   };
 
-  const getStatusIcon = (status) => {
+  const getStatusText = (status) => {
     switch (status) {
       case 'completed':
-        return '✅';
+        return 'Completed';
       case 'unlocked':
-        return '🔓';
+        return 'Available';
       case 'locked':
-        return '🔒';
+        return 'Locked';
       default:
-        return '🔒';
+        return 'Locked';
     }
   };
 
@@ -64,28 +64,30 @@ export default function LevelSelectionPage() {
     return (
       <div className="loading-container">
         <div className="spinner"></div>
-        <p style={{ marginTop: '16px', fontSize: '18px' }}>Loading levels...</p>
+        <p style={{ marginTop: '16px', fontSize: '14px', color: '#757575' }}>Loading levels...</p>
       </div>
     );
   }
 
   return (
-    <div style={{ minHeight: '100vh', padding: '40px 20px', background: '#f8fafc' }}>
+    <div style={{ minHeight: '100vh', padding: '40px 20px', background: '#ffffff' }}>
       <div className="container">
         <div style={{
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
           marginBottom: '40px',
+          paddingBottom: '20px',
+          borderBottom: '1px solid #e0e0e0',
           flexWrap: 'wrap',
           gap: '16px',
         }}>
           <div>
-            <h1 style={{ fontSize: '36px', fontWeight: '800', color: '#1f2937', marginBottom: '8px' }}>
-              Welcome, {user?.username}! 🎓
+            <h1 style={{ fontSize: '28px', fontWeight: '600', color: '#1a1a1a', marginBottom: '4px' }}>
+              {user?.username}
             </h1>
-            <p style={{ fontSize: '18px', color: '#6b7280' }}>
-              Choose a level to start learning
+            <p style={{ fontSize: '14px', color: '#757575' }}>
+              Select a level to continue
             </p>
           </div>
           <button onClick={logout} className="btn btn-secondary">
@@ -107,26 +109,17 @@ export default function LevelSelectionPage() {
               onClick={() => handleLevelClick(level)}
               style={{
                 cursor: level.status === 'locked' ? 'not-allowed' : 'pointer',
-                opacity: level.status === 'locked' ? 0.6 : 1,
+                opacity: level.status === 'locked' ? 0.5 : 1,
                 position: 'relative',
-                overflow: 'hidden',
               }}
             >
               <div style={{
-                position: 'absolute',
-                top: '16px',
-                right: '16px',
-                fontSize: '32px',
-              }}>
-                {getStatusIcon(level.status)}
-              </div>
-
-              <div style={{
                 width: '100%',
-                height: '200px',
-                borderRadius: '8px',
+                height: '180px',
+                borderRadius: '2px',
                 marginBottom: '16px',
                 overflow: 'hidden',
+                border: '1px solid #e0e0e0',
               }}>
                 <img
                   src={level.imageUrl}
@@ -135,47 +128,51 @@ export default function LevelSelectionPage() {
                     width: '100%',
                     height: '100%',
                     objectFit: 'cover',
+                    filter: level.status === 'locked' ? 'grayscale(100%)' : 'none',
                   }}
                 />
               </div>
 
               <div style={{
                 display: 'inline-block',
-                padding: '4px 12px',
-                borderRadius: '20px',
+                padding: '4px 10px',
+                borderRadius: '2px',
                 background: getStatusColor(level.status),
-                color: 'white',
-                fontSize: '12px',
-                fontWeight: '600',
+                color: level.status === 'locked' ? '#757575' : '#ffffff',
+                fontSize: '11px',
+                fontWeight: '500',
                 marginBottom: '12px',
+                textTransform: 'uppercase',
+                letterSpacing: '0.5px',
               }}>
                 Level {level.levelNumber}
               </div>
 
-              <h3 style={{ fontSize: '24px', fontWeight: '700', marginBottom: '8px', color: '#111827' }}>
+              <h3 style={{ fontSize: '18px', fontWeight: '600', marginBottom: '6px', color: '#1a1a1a' }}>
                 {level.title}
               </h3>
 
-              <p style={{ fontSize: '14px', color: '#6b7280', marginBottom: '12px' }}>
-                Theme: {level.theme}
+              <p style={{ fontSize: '13px', color: '#757575', marginBottom: '12px' }}>
+                {level.theme}
               </p>
 
               {level.highScore > 0 && (
                 <div style={{
-                  padding: '12px',
-                  background: '#f0fdf4',
-                  borderRadius: '8px',
-                  borderLeft: '4px solid #10b981',
+                  padding: '8px',
+                  background: '#fafafa',
+                  borderRadius: '2px',
+                  border: '1px solid #e0e0e0',
+                  marginTop: '12px',
                 }}>
-                  <p style={{ fontSize: '14px', color: '#065f46', fontWeight: '600' }}>
-                    High Score: {level.highScore}%
+                  <p style={{ fontSize: '12px', color: '#1a1a1a', fontWeight: '500' }}>
+                    Best: {level.highScore}%
                   </p>
                 </div>
               )}
 
               {level.status === 'locked' && (
-                <p style={{ fontSize: '14px', color: '#ef4444', marginTop: '12px', fontWeight: '600' }}>
-                  Complete previous levels to unlock
+                <p style={{ fontSize: '12px', color: '#757575', marginTop: '12px' }}>
+                  Complete previous levels
                 </p>
               )}
             </div>

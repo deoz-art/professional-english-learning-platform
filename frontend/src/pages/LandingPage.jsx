@@ -20,167 +20,81 @@ export default function LandingPage() {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      padding: '20px',
-      background: '#f8fafc',
+      padding: '40px 20px',
+      background: '#fafafa',
     }}>
       <div style={{
-        background: 'white',
-        borderRadius: '24px',
-        padding: '64px 48px',
-        maxWidth: '900px',
+        maxWidth: '800px',
         width: '100%',
-        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.07)',
-        border: '1px solid #e5e7eb',
       }}>
         {/* Header Section */}
-        <div style={{ textAlign: 'center', marginBottom: '48px' }}>
-          <div style={{ 
-            fontSize: '64px', 
-            marginBottom: '16px',
-          }}>
-            🎓📱
-          </div>
+        <div style={{ textAlign: 'center', marginBottom: '80px' }}>
           <h1 style={{ 
-            fontSize: '48px', 
-            fontWeight: '800', 
-            color: '#1f2937', 
+            fontSize: '72px', 
+            fontWeight: '300', 
+            color: '#1a1a1a', 
             marginBottom: '16px',
+            letterSpacing: '-2px',
           }}>
             SAKA
           </h1>
-          <h2 style={{ 
-            fontSize: '24px', 
-            fontWeight: '600', 
-            color: '#2563eb',
-            marginBottom: '12px'
+          <p style={{ 
+            color: '#666', 
+            fontSize: '16px',
+            maxWidth: '500px',
+            margin: '0 auto',
+            lineHeight: '1.8',
+            fontWeight: '300',
           }}>
             Smart Application for Kid's Speaking Activity
-          </h2>
-          <p style={{ 
-            color: '#6b7280', 
-            fontSize: '18px',
-            maxWidth: '600px',
-            margin: '0 auto'
-          }}>
-            Platform pembelajaran bahasa Inggris interaktif yang dirancang khusus untuk meningkatkan kemampuan berbicara anak-anak dengan cara yang menyenangkan dan efektif.
           </p>
         </div>
 
         {/* Features Section */}
-        <div style={{ marginBottom: '48px' }}>
-          <h3 style={{ 
-            fontSize: '24px', 
-            fontWeight: '700', 
-            color: '#111827',
-            marginBottom: '24px',
-            textAlign: 'center'
-          }}>
-            ✨ Fitur Utama
-          </h3>
+        <div style={{ marginBottom: '80px' }}>
           <div style={{ 
             display: 'grid', 
-            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-            gap: '24px'
+            gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
+            gap: '32px'
           }}>
-            <div className="card" style={{ textAlign: 'center' }}>
-              <div style={{ fontSize: '40px', marginBottom: '12px' }}>🎯</div>
-              <h4 style={{ fontSize: '18px', fontWeight: '600', marginBottom: '8px', color: '#111827' }}>
-                Level Bertingkat
+            <div style={{ textAlign: 'center' }}>
+              <div style={{ fontSize: '32px', marginBottom: '16px', fontWeight: '300' }}>01</div>
+              <h4 style={{ fontSize: '14px', fontWeight: '500', marginBottom: '8px', color: '#1a1a1a', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                Levels
               </h4>
-              <p style={{ fontSize: '14px', color: '#6b7280' }}>
-                Sistem pembelajaran dengan level yang disesuaikan dengan kemampuan anak
+              <p style={{ fontSize: '13px', color: '#999', lineHeight: '1.6' }}>
+                Progressive learning system
               </p>
             </div>
 
-            <div className="card" style={{ textAlign: 'center' }}>
-              <div style={{ fontSize: '40px', marginBottom: '12px' }}>🎤</div>
-              <h4 style={{ fontSize: '18px', fontWeight: '600', marginBottom: '8px', color: '#111827' }}>
-                Latihan Speaking
+            <div style={{ textAlign: 'center' }}>
+              <div style={{ fontSize: '32px', marginBottom: '16px', fontWeight: '300' }}>02</div>
+              <h4 style={{ fontSize: '14px', fontWeight: '500', marginBottom: '8px', color: '#1a1a1a', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                Speaking
               </h4>
-              <p style={{ fontSize: '14px', color: '#6b7280' }}>
-                Fokus pada peningkatan kemampuan berbicara dengan latihan interaktif
+              <p style={{ fontSize: '13px', color: '#999', lineHeight: '1.6' }}>
+                Interactive voice practice
               </p>
             </div>
 
-            <div className="card" style={{ textAlign: 'center' }}>
-              <div style={{ fontSize: '40px', marginBottom: '12px' }}>📊</div>
-              <h4 style={{ fontSize: '18px', fontWeight: '600', marginBottom: '8px', color: '#111827' }}>
-                Tracking Progress
+            <div style={{ textAlign: 'center' }}>
+              <div style={{ fontSize: '32px', marginBottom: '16px', fontWeight: '300' }}>03</div>
+              <h4 style={{ fontSize: '14px', fontWeight: '500', marginBottom: '8px', color: '#1a1a1a', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                Tracking
               </h4>
-              <p style={{ fontSize: '14px', color: '#6b7280' }}>
-                Pantau perkembangan belajar anak secara real-time
+              <p style={{ fontSize: '13px', color: '#999', lineHeight: '1.6' }}>
+                Real-time progress monitor
               </p>
             </div>
 
-            <div className="card" style={{ textAlign: 'center' }}>
-              <div style={{ fontSize: '40px', marginBottom: '12px' }}>🎮</div>
-              <h4 style={{ fontSize: '18px', fontWeight: '600', marginBottom: '8px', color: '#111827' }}>
-                Gamifikasi
+            <div style={{ textAlign: 'center' }}>
+              <div style={{ fontSize: '32px', marginBottom: '16px', fontWeight: '300' }}>04</div>
+              <h4 style={{ fontSize: '14px', fontWeight: '500', marginBottom: '8px', color: '#1a1a1a', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                Dashboard
               </h4>
-              <p style={{ fontSize: '14px', color: '#6b7280' }}>
-                Belajar sambil bermain dengan sistem poin dan achievement
+              <p style={{ fontSize: '13px', color: '#999', lineHeight: '1.6' }}>
+                Content management system
               </p>
-            </div>
-
-            <div className="card" style={{ textAlign: 'center' }}>
-              <div style={{ fontSize: '40px', marginBottom: '12px' }}>👨‍🏫</div>
-              <h4 style={{ fontSize: '18px', fontWeight: '600', marginBottom: '8px', color: '#111827' }}>
-                Admin Dashboard
-              </h4>
-              <p style={{ fontSize: '14px', color: '#6b7280' }}>
-                Panel admin untuk mengelola konten dan monitoring siswa
-              </p>
-            </div>
-
-            <div className="card" style={{ textAlign: 'center' }}>
-              <div style={{ fontSize: '40px', marginBottom: '12px' }}>🌟</div>
-              <h4 style={{ fontSize: '18px', fontWeight: '600', marginBottom: '8px', color: '#111827' }}>
-                User-Friendly
-              </h4>
-              <p style={{ fontSize: '14px', color: '#6b7280' }}>
-                Interface yang mudah digunakan dan ramah untuk anak-anak
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Target Audience */}
-        <div style={{ 
-          background: '#f0f9ff',
-          borderRadius: '16px',
-          padding: '32px',
-          marginBottom: '32px',
-          border: '1px solid #bfdbfe',
-        }}>
-          <h3 style={{ 
-            fontSize: '20px', 
-            fontWeight: '700', 
-            color: '#111827',
-            marginBottom: '16px',
-            textAlign: 'center'
-          }}>
-            👥 Untuk Siapa SAKA?
-          </h3>
-          <div style={{ 
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-            gap: '16px',
-            textAlign: 'center'
-          }}>
-            <div>
-              <div style={{ fontSize: '32px', marginBottom: '8px' }}>👶</div>
-              <p style={{ fontSize: '16px', fontWeight: '600', color: '#374151' }}>Anak-anak</p>
-              <p style={{ fontSize: '14px', color: '#6b7280' }}>Usia 6-12 tahun</p>
-            </div>
-            <div>
-              <div style={{ fontSize: '32px', marginBottom: '8px' }}>👪</div>
-              <p style={{ fontSize: '16px', fontWeight: '600', color: '#374151' }}>Orang Tua</p>
-              <p style={{ fontSize: '14px', color: '#6b7280' }}>Monitoring progress</p>
-            </div>
-            <div>
-              <div style={{ fontSize: '32px', marginBottom: '8px' }}>🏫</div>
-              <p style={{ fontSize: '16px', fontWeight: '600', color: '#374151' }}>Sekolah</p>
-              <p style={{ fontSize: '14px', color: '#6b7280' }}>Pembelajaran mandiri</p>
             </div>
           </div>
         </div>
@@ -191,20 +105,22 @@ export default function LandingPage() {
             onClick={handleGetStarted}
             className="btn btn-primary btn-large"
             style={{ 
-              fontSize: '20px',
-              padding: '20px 48px',
+              fontSize: '14px',
+              padding: '16px 48px',
+              textTransform: 'uppercase',
+              letterSpacing: '1px',
             }}
           >
-            {user ? '🚀 Lanjutkan Belajar' : '🎯 Mulai Sekarang'}
+            {user ? 'Continue' : 'Get Started'}
           </button>
           {!user && (
-            <p style={{ marginTop: '16px', fontSize: '14px', color: '#6b7280' }}>
-              Sudah punya akun?{' '}
+            <p style={{ marginTop: '24px', fontSize: '13px', color: '#999' }}>
+              Already have an account?{' '}
               <a
                 href="/login"
-                style={{ color: '#2563eb', fontWeight: '600', textDecoration: 'none' }}
+                style={{ color: '#1a1a1a', fontWeight: '500', textDecoration: 'none', borderBottom: '1px solid #1a1a1a' }}
               >
-                Login di sini
+                Sign in
               </a>
             </p>
           )}

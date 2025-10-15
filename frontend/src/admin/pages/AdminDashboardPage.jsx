@@ -40,70 +40,62 @@ export default function AdminDashboardPage() {
 
   return (
     <div style={{ padding: '40px' }}>
-      <h1 style={{ fontSize: '32px', fontWeight: '800', marginBottom: '32px', color: '#111827' }}>
-        Dashboard Overview
+      <h1 style={{ fontSize: '24px', fontWeight: '600', marginBottom: '32px', color: '#1a1a1a' }}>
+        Dashboard
       </h1>
 
-      {/* KPI Cards */}
       <div className="grid grid-4" style={{ marginBottom: '40px' }}>
         <KPICard
-          title="Total Students"
+          title="Students"
           value={stats.kpis.totalUsers}
-          icon="👥"
-          color="#667eea"
+          color="#1a1a1a"
         />
         <KPICard
-          title="Active Quizzes"
+          title="Quizzes"
           value={stats.kpis.totalLevels}
-          icon="🎓"
-          color="#10b981"
+          color="#1a1a1a"
         />
         <KPICard
-          title="Average Score"
+          title="Avg Score"
           value={`${stats.kpis.avgScore}%`}
-          icon="⭐"
-          color="#f59e0b"
+          color="#1a1a1a"
         />
         <KPICard
-          title="Completion Rate"
+          title="Completion"
           value={`${stats.kpis.completionRate}%`}
-          icon="✅"
-          color="#8b5cf6"
+          color="#1a1a1a"
         />
       </div>
 
-      {/* Charts */}
       <div className="grid grid-2">
-        {/* Registration Chart */}
         <div className="card">
-          <h3 style={{ fontSize: '20px', fontWeight: '700', marginBottom: '24px', color: '#111827' }}>
-            User Registrations (Last 30 Days)
+          <h3 style={{ fontSize: '16px', fontWeight: '600', marginBottom: '24px', color: '#1a1a1a' }}>
+            Registrations (30 days)
           </h3>
           <ResponsiveContainer width="100%" height={300}>
             <LineChart data={stats.registrationData}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="date" />
-              <YAxis />
+              <CartesianGrid strokeDasharray="3 3" stroke="#f5f5f5" />
+              <XAxis dataKey="date" style={{ fontSize: '12px' }} stroke="#757575" />
+              <YAxis style={{ fontSize: '12px' }} stroke="#757575" />
               <Tooltip />
               <Legend />
-              <Line type="monotone" dataKey="registrations" stroke="#667eea" strokeWidth={2} />
+              <Line type="monotone" dataKey="registrations" stroke="#1a1a1a" strokeWidth={2} />
             </LineChart>
           </ResponsiveContainer>
         </div>
 
-        {/* Performance Chart */}
         <div className="card">
-          <h3 style={{ fontSize: '20px', fontWeight: '700', marginBottom: '24px', color: '#111827' }}>
-            Performance per Level
+          <h3 style={{ fontSize: '16px', fontWeight: '600', marginBottom: '24px', color: '#1a1a1a' }}>
+            Performance by Level
           </h3>
           <ResponsiveContainer width="100%" height={300}>
             <BarChart data={stats.performanceData}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="level" />
-              <YAxis />
+              <CartesianGrid strokeDasharray="3 3" stroke="#f5f5f5" />
+              <XAxis dataKey="level" style={{ fontSize: '12px' }} stroke="#757575" />
+              <YAxis style={{ fontSize: '12px' }} stroke="#757575" />
               <Tooltip />
               <Legend />
-              <Bar dataKey="avgScore" fill="#10b981" />
+              <Bar dataKey="avgScore" fill="#1a1a1a" />
             </BarChart>
           </ResponsiveContainer>
         </div>

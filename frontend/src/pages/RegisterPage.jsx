@@ -15,7 +15,6 @@ export default function RegisterPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Redirect if already logged in
     if (user) {
       navigate(isAdmin() ? '/admin/dashboard' : '/levels', { replace: true });
     }
@@ -33,7 +32,6 @@ export default function RegisterPage() {
     setError('');
     setLoading(true);
 
-    // Client-side validation
     if (formData.password !== formData.confirmPassword) {
       setError('Passwords do not match');
       setLoading(false);
@@ -41,13 +39,13 @@ export default function RegisterPage() {
     }
 
     if (formData.password.length < 6) {
-      setError('Password must be at least 6 characters long');
+      setError('Password must be at least 6 characters');
       setLoading(false);
       return;
     }
 
     if (formData.username.length < 3) {
-      setError('Username must be at least 3 characters long');
+      setError('Username must be at least 3 characters');
       setLoading(false);
       return;
     }
@@ -69,26 +67,26 @@ export default function RegisterPage() {
       alignItems: 'center',
       justifyContent: 'center',
       padding: '20px',
+      background: '#fafafa',
     }}>
       <div style={{
         background: 'white',
-        borderRadius: '16px',
-        padding: '48px',
-        maxWidth: '450px',
+        border: '1px solid #e8e8e8',
+        padding: '64px 48px',
+        maxWidth: '420px',
         width: '100%',
-        boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1)',
       }}>
-        <div style={{ textAlign: 'center', marginBottom: '32px' }}>
-          <h1 style={{ fontSize: '32px', fontWeight: '800', color: '#111827', marginBottom: '8px' }}>
-            Create Account 🚀
+        <div style={{ marginBottom: '48px' }}>
+          <h1 style={{ fontSize: '24px', fontWeight: '300', color: '#1a1a1a', marginBottom: '8px', letterSpacing: '-0.5px' }}>
+            Create Account
           </h1>
-          <p style={{ color: '#6b7280', fontSize: '16px' }}>
-            Join us to start learning
+          <p style={{ color: '#999', fontSize: '13px' }}>
+            Join the learning platform
           </p>
         </div>
 
         {error && (
-          <div className="alert alert-error" style={{ marginBottom: '24px' }}>
+          <div className="alert alert-error" style={{ marginBottom: '32px' }}>
             {error}
           </div>
         )}
@@ -101,7 +99,7 @@ export default function RegisterPage() {
               name="username"
               value={formData.username}
               onChange={handleChange}
-              placeholder="Choose a username (min. 3 characters)"
+              placeholder="Min. 3 characters"
               required
               disabled={loading}
               minLength={3}
@@ -115,7 +113,7 @@ export default function RegisterPage() {
               name="password"
               value={formData.password}
               onChange={handleChange}
-              placeholder="Create a password (min. 6 characters)"
+              placeholder="Min. 6 characters"
               required
               disabled={loading}
               minLength={6}
@@ -129,7 +127,7 @@ export default function RegisterPage() {
               name="confirmPassword"
               value={formData.confirmPassword}
               onChange={handleChange}
-              placeholder="Confirm your password"
+              placeholder="Confirm password"
               required
               disabled={loading}
             />
@@ -145,21 +143,15 @@ export default function RegisterPage() {
           </button>
         </form>
 
-        <div style={{ marginTop: '24px', textAlign: 'center' }}>
-          <p style={{ fontSize: '14px', color: '#6b7280' }}>
+        <div style={{ marginTop: '32px', textAlign: 'center', paddingTop: '32px', borderTop: '1px solid #f0f0f0' }}>
+          <p style={{ fontSize: '13px', color: '#999' }}>
             Already have an account?{' '}
             <a
               href="/login"
-              style={{ color: '#3b82f6', fontWeight: '600', textDecoration: 'none' }}
+              style={{ color: '#1a1a1a', fontWeight: '500', textDecoration: 'none', borderBottom: '1px solid #1a1a1a' }}
             >
-              Sign in here
+              Sign in
             </a>
-          </p>
-        </div>
-
-        <div style={{ marginTop: '24px', padding: '16px', background: '#f9fafb', borderRadius: '8px' }}>
-          <p style={{ fontSize: '12px', color: '#6b7280', textAlign: 'center', margin: 0 }}>
-            💡 <strong>Tip:</strong> Choose a memorable username and secure password
           </p>
         </div>
       </div>

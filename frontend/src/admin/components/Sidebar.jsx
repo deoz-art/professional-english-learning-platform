@@ -7,33 +7,36 @@ export default function Sidebar() {
 
   const navLinkStyle = {
     display: 'block',
-    padding: '16px 24px',
-    color: 'rgba(255,255,255,0.8)',
+    padding: '12px 24px',
+    color: '#666',
     textDecoration: 'none',
-    fontSize: '16px',
+    fontSize: '13px',
     fontWeight: '500',
-    borderRadius: '8px',
-    marginBottom: '8px',
+    borderRadius: '0',
+    marginBottom: '4px',
     transition: 'all 0.2s ease',
+    textTransform: 'uppercase',
+    letterSpacing: '0.5px',
   };
 
   const activeStyle = {
-    background: 'rgba(255,255,255,0.1)',
+    background: '#1a1a1a',
     color: 'white',
   };
 
   return (
     <div style={{
-      width: '280px',
-      background: 'linear-gradient(180deg, #667eea 0%, #764ba2 100%)',
-      padding: '32px 24px',
-      color: 'white',
+      width: '260px',
+      background: 'white',
+      padding: '40px 0',
+      color: '#1a1a1a',
+      borderRight: '1px solid #e8e8e8',
     }}>
-      <div style={{ marginBottom: '40px' }}>
-        <h2 style={{ fontSize: '24px', fontWeight: '800', marginBottom: '4px' }}>
+      <div style={{ marginBottom: '64px', padding: '0 24px' }}>
+        <h2 style={{ fontSize: '16px', fontWeight: '300', marginBottom: '4px', letterSpacing: '0.5px' }}>
           Admin Panel
         </h2>
-        <p style={{ fontSize: '14px', opacity: 0.8 }}>
+        <p style={{ fontSize: '12px', color: '#999' }}>
           {user?.username}
         </p>
       </div>
@@ -46,7 +49,7 @@ export default function Sidebar() {
             ...(isActive ? activeStyle : {}),
           })}
         >
-          📊 Dashboard
+          Dashboard
         </NavLink>
 
         <NavLink
@@ -56,7 +59,7 @@ export default function Sidebar() {
             ...(isActive ? activeStyle : {}),
           })}
         >
-          👥 User Management
+          Users
         </NavLink>
 
         <NavLink
@@ -66,16 +69,16 @@ export default function Sidebar() {
             ...(isActive ? activeStyle : {}),
           })}
         >
-          📝 Content Management
+          Content
         </NavLink>
 
-        <div style={{ borderTop: '1px solid rgba(255,255,255,0.2)', margin: '24px 0' }}></div>
+        <div style={{ borderTop: '1px solid #e8e8e8', margin: '24px 24px' }}></div>
 
         <NavLink
           to="/levels"
           style={navLinkStyle}
         >
-          🎓 Student View
+          Student View
         </NavLink>
 
         <button
@@ -83,13 +86,13 @@ export default function Sidebar() {
           style={{
             ...navLinkStyle,
             width: '100%',
-            background: 'rgba(255,255,255,0.1)',
+            background: 'transparent',
             border: 'none',
             cursor: 'pointer',
             textAlign: 'left',
           }}
         >
-          🚪 Logout
+          Sign Out
         </button>
       </nav>
     </div>
