@@ -21,6 +21,7 @@ export default function LandingPage() {
       alignItems: 'center',
       justifyContent: 'center',
       padding: '20px',
+      background: '#f8fafc',
     }}>
       <div style={{
         background: 'white',
@@ -28,33 +29,29 @@ export default function LandingPage() {
         padding: '64px 48px',
         maxWidth: '900px',
         width: '100%',
-        boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1)',
+        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.07)',
+        border: '1px solid #e5e7eb',
       }}>
         {/* Header Section */}
         <div style={{ textAlign: 'center', marginBottom: '48px' }}>
           <div style={{ 
             fontSize: '64px', 
             marginBottom: '16px',
-            filter: 'drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1))'
           }}>
             🎓📱
           </div>
           <h1 style={{ 
             fontSize: '48px', 
             fontWeight: '800', 
-            color: '#111827', 
+            color: '#1f2937', 
             marginBottom: '16px',
-            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text'
           }}>
             SAKA
           </h1>
           <h2 style={{ 
             fontSize: '24px', 
             fontWeight: '600', 
-            color: '#374151',
+            color: '#2563eb',
             marginBottom: '12px'
           }}>
             Smart Application for Kid's Speaking Activity
@@ -149,10 +146,11 @@ export default function LandingPage() {
 
         {/* Target Audience */}
         <div style={{ 
-          background: 'linear-gradient(135deg, #667eea10 0%, #764ba210 100%)',
+          background: '#f0f9ff',
           borderRadius: '16px',
           padding: '32px',
-          marginBottom: '32px'
+          marginBottom: '32px',
+          border: '1px solid #bfdbfe',
         }}>
           <h3 style={{ 
             fontSize: '20px', 
@@ -195,7 +193,6 @@ export default function LandingPage() {
             style={{ 
               fontSize: '20px',
               padding: '20px 48px',
-              boxShadow: '0 10px 25px rgba(102, 126, 234, 0.3)'
             }}
           >
             {user ? '🚀 Lanjutkan Belajar' : '🎯 Mulai Sekarang'}
@@ -205,7 +202,7 @@ export default function LandingPage() {
               Sudah punya akun?{' '}
               <a
                 href="/login"
-                style={{ color: '#667eea', fontWeight: '600', textDecoration: 'none' }}
+                style={{ color: '#2563eb', fontWeight: '600', textDecoration: 'none' }}
               >
                 Login di sini
               </a>

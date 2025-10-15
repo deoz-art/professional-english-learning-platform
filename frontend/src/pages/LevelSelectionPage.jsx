@@ -39,7 +39,7 @@ export default function LevelSelectionPage() {
       case 'completed':
         return '#10b981';
       case 'unlocked':
-        return '#667eea';
+        return '#2563eb';
       case 'locked':
         return '#9ca3af';
       default:
@@ -70,7 +70,7 @@ export default function LevelSelectionPage() {
   }
 
   return (
-    <div style={{ minHeight: '100vh', padding: '40px 20px' }}>
+    <div style={{ minHeight: '100vh', padding: '40px 20px', background: '#f8fafc' }}>
       <div className="container">
         <div style={{
           display: 'flex',
@@ -81,10 +81,10 @@ export default function LevelSelectionPage() {
           gap: '16px',
         }}>
           <div>
-            <h1 style={{ fontSize: '36px', fontWeight: '800', color: 'white', marginBottom: '8px' }}>
+            <h1 style={{ fontSize: '36px', fontWeight: '800', color: '#1f2937', marginBottom: '8px' }}>
               Welcome, {user?.username}! 🎓
             </h1>
-            <p style={{ fontSize: '18px', color: 'rgba(255,255,255,0.9)' }}>
+            <p style={{ fontSize: '18px', color: '#6b7280' }}>
               Choose a level to start learning
             </p>
           </div>
